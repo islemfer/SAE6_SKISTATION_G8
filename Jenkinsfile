@@ -21,14 +21,14 @@ pipeline {
         //     }
         // }
 
-        // stage('Mockito & JUnit test') {
-        //     steps {
-        //        script {
-        //         sh 'mvn test'
-        //       }
+        stage('Mockito & JUnit test') {
+            steps {
+               script {
+                sh 'mvn test'
+              }
                 
-        //     }
-        // }
+            }
+        }
 
         // stage('Nexust') {
         //     steps {
