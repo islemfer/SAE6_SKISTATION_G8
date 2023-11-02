@@ -15,7 +15,7 @@ services:
       - mysql-data:/var/lib/mysql
 
   gestion-station-ski:
-    build: ../sae6_g2_skistation-
+    build: ../sae6_g8_skistation-
     image: gestion-station-ski
     container_name: gestion-station-ski
     environment:
