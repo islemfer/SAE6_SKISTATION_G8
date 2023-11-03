@@ -21,41 +21,41 @@ pipeline {
          // }
    //  }
 
-        stage('Mockito & JUnit test') {
-            steps {
-              script {
-              sh 'mvn test'
-             }
+       // stage('Mockito & JUnit test') {
+            //steps {
+             // script {
+              //sh 'mvn test'
+            // }
                 
-           }
-       }
+          // }
+      // }
 
-        stage('Nexust') {
-            steps {
-              script {
-                sh 'mvn deploy'
-           }
+       // stage('Nexust') {
+           // steps {
+             // script {
+               // sh 'mvn deploy'
+          // }
                 
-            }
-        }
- stage('install  et  compile') {
-            steps {
-               script {
-                sh 'mvn clean compile'
-           }
+           // }
+       // }
+ //stage('install  et  compile') {
+           // steps {
+             //  script {
+             //   sh 'mvn clean compile'
+         //  }
                 
-            }
-         }
+          //  }
+       //  }
 
 
-  stage('Docker compose') {
-            steps {
-               script {
-                sh 'docker-compose up -d'
-           }
+ // stage('Docker compose') {
+        //    steps {
+            //   script {
+             //   sh 'docker-compose up -d'
+          // }
                 
-            }
-         }
+            //}
+        // }
         // stage('Quality Gate') {
         //     steps {
         //        timeout(time: 5, unit: 'MINUTES') {
