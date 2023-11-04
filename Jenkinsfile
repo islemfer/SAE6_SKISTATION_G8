@@ -5,7 +5,7 @@ pipeline {
 
          stage('Checkout GIT') {
                steps{
-                     echo 'Pulling...''
+                     echo 'Pulling...'
                             git branch: 'OussamaBENROMDHANE_5SAE6_G8',
                             url : 'https://github.com/islemfer/SAE6_SKISTATION_G8'
                     }
