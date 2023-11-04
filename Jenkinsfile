@@ -27,16 +27,16 @@ pipeline {
                 
             }
         }
-                // stage('SonarQube analyse') {
-                //     steps {
-                //        script {
-                //     withSonarQubeEnv(installationName: 'sq1') {
-                //         sh 'mvn sonar:sonar'
-                //     }
-                // }
+                 stage('SonarQube analyse') {
+                    steps {
+                       script {
+                     withSonarQubeEnv(installationName: 'sq1') {
+                        sh 'mvn sonar:sonar'
+                    }
+                 }
 
-                //     }
-                // }
+                     }
+                 }
 
 
         // stage('Nexus') {
