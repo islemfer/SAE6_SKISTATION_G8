@@ -54,25 +54,25 @@ environment {
                 }
             } 
         }
-      // stage('Deploy Image') { 
-           // steps { 
-              //  script { 
-                  //  docker.withRegistry( '', registryCredential ) { 
-                      //  dockerImage.push() 
-                   // }
-              //  } 
-           // }
-       // }
-
-stage('Deploy Image') {
-    steps {
-        script {
-            withDockerRegistry(credentialsId: 'dockerhubcridential', url: '') {
-                dockerImage.push()
+       stage('Deploy Image') { 
+            steps { 
+                script { 
+                    docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+                    }
+                } 
             }
         }
-    }
-}
+
+//stage('Deploy Image') {
+   // steps {
+      //  script {
+           // withDockerRegistry(credentialsId: 'dockerhubcridential', url: '') {
+             //   dockerImage.push()
+           // }
+       // }
+  //  }
+//}
 
        stage('Docker Compose') {
             steps {
