@@ -4,6 +4,7 @@ environment {
         registryCredential = 'dockerhubcridential' 
         dockerImage = '' 
     }
+
     agent any
     
     stages {
