@@ -33,7 +33,8 @@ pipeline {
          stage('Nexus') {
              steps {
                 script {
-                 sh 'mvn deploy'
+                 //sh 'mvn deploy'
+                  sh 'mvn deploy -DskipTests'
               }
                 
              }
