@@ -30,7 +30,7 @@ pipeline {
             }
         }
 
-         stage('Nexust') {
+         stage('Nexus') {
              steps {
                 script {
                  sh 'mvn deploy'
