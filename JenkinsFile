@@ -1,75 +1,82 @@
 pipeline {
-    environment { 
+environment { 
         registry = "islemferchichi/projetdevops" 
         registryCredential = 'dockerhubcridential' 
+        dockerImage = '' 
     }
 
     agent any
-
+    
     stages {
+
         stage('Nettoyage et compilation Maven') {
             steps {
+                // Cette étape va nettoyer et compiler le projet avec Maven
                 sh 'mvn clean compile'
             }
         }
 
-        stage('SonarQube analyse') {
-            steps {
-                script {
-                    withSonarQubeEnv(installationName: 'sq1') {
-                        sh 'mvn sonar:sonar'
-                    }
-                }
-            }
+         stage('SonarQube analyse') {
+             steps {
+               script {
+            withSonarQubeEnv(installationName: 'sq1') {
+                 sh 'mvn sonar:sonar'
+             }
         }
+                
+           }
+       }
 
         stage('Mockito & JUnit test') {
-            steps {
-                script {
-                    sh 'mvn test'
-                }
+           steps {
+               script {
+                sh 'mvn test'
+             }
+                
             }
         }
 
-        stage('Nexus') {
-            steps {
+         stage('Nexus') {
+             steps {
                 script {
-                    sh 'mvn deploy -DskipTests'
-                }
-            }
+                 //sh 'mvn deploy'
+                  sh 'mvn deploy -DskipTests'
+              }
+                
+             }
         }
-
-        stage('Docker Image') { 
+         stage('Docker Image') { 
             steps { 
                 script { 
                     dockerImage = docker.build registry + ":ImageSpringboot" 
                 }
             } 
         }
-
-        stage('Deploy Image') { 
+       stage('Deploy Image') { 
             steps { 
                 script { 
-                    docker.withRegistry('', registryCredential) { 
+                    docker.withRegistry( '', registryCredential ) { 
                         dockerImage.push() 
                     }
                 } 
             }
         }
-
-        stage('Docker Compose') {
+       stage('Docker Compose') {
             steps {
-                sh 'docker compose up -d'
+                    sh 'docker compose up -d'
             }
         }
 
         // stage('Quality Gate') {
         //     steps {
-        //         timeout(time: 5, unit: 'MINUTES') {
-        //             waitForQualityGate abortPipeline: true
-        //         }
+        //        timeout(time: 5, unit: 'MINUTES') {
+        //            waitForQualityGate abortPipeline: true
+        //        }
+                
         //     }
         // }
+
+    
     }
-}
+      }
 
