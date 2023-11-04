@@ -17,7 +17,7 @@ services:
     container_name: gestion-station-ski
     restart:  on-failure
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container-devops:3306/stationSki?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container-devops:3306/stationSki?createDatabaseIfNotExist=true&useUnicode=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD:
     ports:
