@@ -1,7 +1,7 @@
 pipeline {
 environment { 
         registry = "islemferchichi/projetdevops" 
-        registryCredential = 'dockerhubcridential' 
+        registryCredential = 'dockerhub' 
         dockerImage = '' 
     }
 
@@ -16,16 +16,7 @@ environment {
             }
         }
 
-         stage('SonarQube analyse') {
-             steps {
-               script {
-            withSonarQubeEnv(installationName: 'sq1') {
-                 sh 'mvn sonar:sonar'
-             }
-        }
-                
-           }
-       }
+       
 
         stage('Mockito & JUnit test') {
            steps {
@@ -35,6 +26,17 @@ environment {
                 
             }
         }
+
+        stage('SonarQube analyse') {
+             steps {
+               script {
+            withSonarQubeEnv(installationName: 'sq1') {
+                 sh 'mvn sonar:sonar'
+             }
+        }
+                
+           }
+       }
 
          stage('Nexus') {
              steps {
@@ -61,6 +63,18 @@ environment {
                 } 
             }
         }
+
+
+//stage('Deploy Image') {
+   // steps {
+      //  script {
+           // withDockerRegistry(credentialsId: 'dockerhubcridential', url: '') {
+             //   dockerImage.push()
+           // }
+       // }
+  //  }
+//}
+
        stage('Docker Compose') {
             steps {
                     sh 'docker compose up -d'
@@ -79,4 +93,4 @@ environment {
     
     }
       }
-      
+
