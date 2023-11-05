@@ -63,7 +63,15 @@ environment {
                 } 
             }
         }
-
+post {
+        failure {
+            emailext(
+                subject: "Échec de la construction du projet DevOps",
+                body: "La construction du projet DevOps a échoué. Consultez la console Jenkins pour plus de détails.",
+                to: "islem.ferchichi@esprit.tn", // Adresse e-mail de réception
+            )
+        }
+    }
 
 //stage('Deploy Image') {
    // steps {
