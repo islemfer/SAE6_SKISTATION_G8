@@ -1,6 +1,6 @@
 pipeline {
 environment {
-        registry = "obr0613/projetdevops"
+        registry = "obr0613/alpine"
         registryCredential = 'dockerhub'
         dockerImage = ''
     }
