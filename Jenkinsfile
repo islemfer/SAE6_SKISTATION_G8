@@ -43,7 +43,7 @@ pipeline {
            steps {
                 script {
         //         sh 'mvn deploy'
-        sh 'mvn deploy -Dmaven.test.skip=true'
+      sh 'mvn deploy -DskipTests'
 
                }
                 
