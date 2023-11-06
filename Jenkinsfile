@@ -1,4 +1,9 @@
 pipeline {
+environment {
+        registry = "obr0613/projetdevops"
+        registryCredential = 'dockerhub'
+        dockerImage = ''
+    }
     agent any
     
     stages {
@@ -49,6 +54,31 @@ pipeline {
                 
              }
          }
+
+                  stage('Docker Image') {
+                     steps {
+                         script {
+                             dockerImage = docker.build registry + ":ImageSpringboot"
+                         }
+                     }
+                 }
+                stage('Deploy Image') {
+                     steps {
+                         script {
+                             docker.withRegistry( '', registryCredential ) {
+                                 dockerImage.push()
+                             }
+                         }
+                     }
+                 }
+
+                 stage('Docker Compose') {
+                     steps {
+                             sh 'docker compose up -d'
+                     }
+                 }
+
+
         // stage('Quality Gate') {
         //     steps {
         //        timeout(time: 5, unit: 'MINUTES') {
