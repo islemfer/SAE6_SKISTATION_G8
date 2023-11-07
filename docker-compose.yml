@@ -13,7 +13,7 @@ services:
       - mysql-data:/var/lib/mysql
 
   spring-app:
-    image: obr0613/projetdevops:ImageSpringboot
+    image: obr0613/projetdevops
     container_name: gestion-station-ski
     restart:  on-failure
     environment:
