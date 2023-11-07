@@ -79,7 +79,7 @@ environment {
                         emailext (
                             subject: "Jenkins Job - ${currentBuild.result}",
                             body: "This is the email body.",
-                            to: "islem.ferchichi@esprit.tn",
+                            to: "islemferchichi28@gmail.com",
                         )
                     } catch (Exception e) {
                         currentBuild.result = 'FAILURE'
@@ -94,14 +94,14 @@ post {
             emailext (
                 body: "MALLA JAW, The Jenkins job was successful.\n You can view the build at: ${BUILD_URL}",
                 subject: "Jenkins Job - Success",
-                to: 'islem.ferchichi@esprit.tn'
+                to: 'islemferchichi28@gmail.com'
             )
         }
         failure {
             emailext (
                 body: "EZZZAH, The Jenkins job failed.\n You can view the build at: ${BUILD_URL}",
                 subject: "Jenkins Job - Failure",
-                to: 'islem.ferchichi@esprit.tn'
+                to: 'islemferchichi28@gmail.com'
             )
         }
     }
