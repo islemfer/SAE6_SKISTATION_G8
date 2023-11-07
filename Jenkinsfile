@@ -58,8 +58,8 @@ environment {
                   stage('Docker Image') {
                      steps {
                          script {
-                             dockerImage = docker.build registry + ":ImageSpringboot"
-                         }
+                             dockerImage = docker.build registry + ":1.0.0"
+                         }ss
                      }
                  }
                 stage('Deploy Image') {
