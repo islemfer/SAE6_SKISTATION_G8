@@ -54,7 +54,7 @@ environment {
                 
              }
          }
-
+/*
                   stage('Docker Image') {
                      steps {
                          script {
@@ -78,7 +78,7 @@ environment {
                      }
                  }
 
-
+*/
         // stage('Quality Gate') {
         //     steps {
         //        timeout(time: 5, unit: 'MINUTES') {
