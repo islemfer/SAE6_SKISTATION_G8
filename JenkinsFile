@@ -89,5 +89,22 @@ environment {
             }
         }
     }
+post {
+        success {
+            emailext (
+                body: "MALLA JAW, The Jenkins job was successful.\n You can view the build at: ${BUILD_URL}",
+                subject: "Jenkins Job - Success",
+                to: 'islem.ferchichi@esprit.tn'
+            )
+        }
+        failure {
+            emailext (
+                body: "EZZZAH, The Jenkins job failed.\n You can view the build at: ${BUILD_URL}",
+                subject: "Jenkins Job - Failure",
+                to: 'islem.ferchichi@esprit.tn'
+            )
+        }
+    }
 }
+
 
