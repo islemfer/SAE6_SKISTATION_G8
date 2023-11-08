@@ -10,9 +10,10 @@
 	</parent>
 	<groupId>tn.esprit.spring</groupId>
 	<artifactId>gestion-station-ski</artifactId>
-	<version>1.0</version>
+	<version>1.0.0</version>
 	<name>gestion-station-ski</name>
 	<description>Demo project for Spring Boot</description>
+	<packaging>jar</packaging>
 	<properties>
 		<java.version>1.8</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
@@ -26,11 +27,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -53,6 +50,11 @@
 			<version>1.6.12</version>
 		</dependency>
 		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -61,15 +63,17 @@
 
 	<build>
 		<plugins>
-			<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-surefire-plugin</artifactId>
-			<version>2.22.2</version>
-			<!-- Additional plugin configuration options can be added here -->
-		</plugin>
+			            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <!-- Additional plugin configuration options can be added here -->
+            </plugin>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.7.13</version>
 				<configuration>
 					<excludes>
 						<exclude>
@@ -81,11 +85,12 @@
 			</plugin>
 		</plugins>
 	</build>
-<distributionManagement>
+	<distributionManagement>
 <repository>
 <id>deploymentRepo</id>
-<name>admin</name>
+<name>Nexus Repository</name>
 <url>http://192.168.33.10:8081/repository/maven-releases/</url>
 </repository>
 </distributionManagement>
+
 </project>
