@@ -64,33 +64,47 @@ environment {
             }
         }
 
-
-//stage('Deploy Image') {
-   // steps {
-      //  script {
-           // withDockerRegistry(credentialsId: 'dockerhubcridential', url: '') {
-             //   dockerImage.push()
-           // }
-       // }
-  //  }
-//}
-
-       stage('Docker Compose') {
+        stage('Docker Compose') {
             steps {
                     sh 'docker compose up -d'
             }
         }
 
-        // stage('Quality Gate') {
-        //     steps {
-        //        timeout(time: 5, unit: 'MINUTES') {
-        //            waitForQualityGate abortPipeline: true
-        //        }
-                
-        //     }
-        // }
 
-    
+     
+  stage('Email Notification') {
+            steps {
+                script {
+                    try {
+                        emailext (
+                            subject: "Jenkins Job - ${currentBuild.result}",
+                            body: "This is the email body.",
+                            to: "islemferchichi28@gmail.com",
+                        )
+                    } catch (Exception e) {
+                        currentBuild.result = 'FAILURE'
+                        throw e
+                    }
+                }
+            }
+        }
     }
-      }
+post {
+        success {
+            emailext (
+                body: "MALLA JAW, The Jenkins job was successful.\n You can view the build at: ${BUILD_URL}",
+                subject: "Jenkins Job - Success",
+                to: 'islemferchichi28@gmail.com'
+            )
+        }
+        failure {
+            emailext (
+                body: "EZZZAH, The Jenkins job failed.\n You can view the build at: ${BUILD_URL}",
+                subject: "Jenkins Job - Failure",
+                to: 'islemferchichi28@gmail.com'
+            )
+        }
+    }
+}
+
 
