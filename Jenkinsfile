@@ -32,6 +32,20 @@ environment {
                 
             }
         }
+
+  agent any
+  triggers {
+    cron('* * * * *')
+  }
+  stages {
+    stage('grafana') {
+      steps {
+        echo 'Hello World - team-a - test'
+        sleep 3
+      }
+    }
+  }
+/*
                  stage('SonarQube analyse') {
                     steps {
                        script {
@@ -78,7 +92,7 @@ environment {
                      }
                  }
 
-
+*/
         // stage('Quality Gate') {
         //     steps {
         //        timeout(time: 5, unit: 'MINUTES') {
