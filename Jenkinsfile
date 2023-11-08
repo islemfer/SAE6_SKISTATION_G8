@@ -34,7 +34,7 @@ environment {
         }
 
 
-/*
+
                  stage('SonarQube analyse') {
                     steps {
                        script {
@@ -45,7 +45,7 @@ environment {
 
                      }
                  }
-*/
+
 
          stage('Nexus') {
            steps {
