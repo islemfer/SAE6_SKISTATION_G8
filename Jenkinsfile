@@ -5,9 +5,7 @@ environment {
         dockerImage = ''
     }
     agent any
-     triggers {
-    cron('* * * * *')
-  }
+
     stages {
 
          stage('Checkout GIT') {
