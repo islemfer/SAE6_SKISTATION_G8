@@ -17,7 +17,7 @@ services:
   app:
     container_name: app
     depends_on:
-      - mysql-container2
+      - mysqldb
     build:
       context: .
       dockerfile: Dockerfile
