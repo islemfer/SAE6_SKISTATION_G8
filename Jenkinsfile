@@ -18,7 +18,6 @@ environment {
 
         stage('Nettoyage et compilation Maven') {
             steps {
-                // Cette étape va nettoyer et compiler le projet avec Maven
                 sh 'mvn clean compile'
             }
         }
@@ -45,8 +44,8 @@ environment {
 
                      }
                  }
-
 */
+
          stage('Nexus') {
            steps {
                 script {
@@ -80,18 +79,15 @@ environment {
                              sh 'docker compose up -d'
                      }
                  }
-  agent any
   triggers {
     cron('* * * * *')
   }
-  stages {
     stage('grafana') {
       steps {
         echo 'Hello World - team-a - test'
         sleep 3
       }
     }
-  }
 
         // stage('Quality Gate') {
         //     steps {
