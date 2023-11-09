@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   mysqldb:
-    container_name: mysql-container3
+    container_name: mysql-container2
     image: mysql:latest 
     restart: unless-stopped
     environment:
@@ -17,7 +17,7 @@ services:
   app:
     container_name: app
     depends_on:
-      - mysqldb
+      - mysql-container2
     build:
       context: .
       dockerfile: Dockerfile
