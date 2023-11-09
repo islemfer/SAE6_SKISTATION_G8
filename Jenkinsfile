@@ -82,7 +82,7 @@ environment {
  
     stage('grafana') {
       steps {
-        echo 'Hello World - team-a - test'
+        echo 'Hello World - Built-In Node - test'
         sleep 3
       }
     }
