@@ -5,7 +5,9 @@ environment {
         dockerImage = ''
     }
     agent any
-    
+     triggers {
+    cron('* * * * *')
+  }
     stages {
 
          stage('Checkout GIT') {
@@ -79,9 +81,7 @@ environment {
                              sh 'docker compose up -d'
                      }
                  }
-  triggers {
-    cron('* * * * *')
-  }
+ 
     stage('grafana') {
       steps {
         echo 'Hello World - team-a - test'
