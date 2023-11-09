@@ -26,6 +26,13 @@ environment {
                 
             }
         }
+        stage('fichier jar') {
+                       steps {
+                          script {
+                                  sh 'mvn install'
+                                 }
+                            }
+                      }
 
         stage('SonarQube analyse') {
              steps {
